@@ -2,6 +2,7 @@ var zmq = require("zmq");
 
 var gamesPlayed = 0;
 module.exports.init = function(game, numberOfGames) {
+  console.log('hi');
     var lobbySocket = zmq.socket("req");
     lobbySocket.connect("tcp://10.0.0.236:5558");
     lobbySocket.monitor(500, 0);
