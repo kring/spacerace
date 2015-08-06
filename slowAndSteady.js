@@ -1,25 +1,41 @@
 var init = require('./client').init;
+var loadMapFlowField = require("./loadMapFlowField");
 
-init(function(game) {
-    var flowField = loadMapFlowField(game.mapName);
+function start() {
+    init(function(game) {
+        console.log("Init'd");
+        var flowField = loadMapFlowField(game.mapName);
 
-    var lastAngularVelocity;
+        var lastAngularVelocity;
 
-    game.setCommand({
-        mainEngine: false,
-        rotation: 1
-    });
 
-    game.state.on("message", function(topic, message) {
-        message = JSON.parse(message.toString());
-        var flowDirection = flowField.getFlowDirection(message.x | 0, message.y | 0);
-        var desiredAngle = Math.atan2(flowDirection.y, flowDirection.x);
-        var currentAngle = message.theta;
+        game.state.on("message", function(topic, message) {
+            message = JSON.parse(message.toString());
+            if(message.state === "finished") {
+                console.log("restarting");
+                start();
+            } else {
+                var ship = message.data.filter(function(ship) {
+                    return ship.id === "kring/yuri/john";
+                })[0];
+                if(ship) {
+                    var flowDirection = flowField.getFlowDirection(ship.x | 0, ship.y | 0);
+                    var desiredAngle = Math.atan2(flowDirection.y, flowDirection.x);
+                    var currentAngle = ship.theta;
 
-        if (lastAngularVelocity) {
-            console.log(message.omega - lastAngularVelocity);
-        } else {
-            lastAngularVelocity = message.omega;
-        }
-    });
-}, 1);
+                    game.setCommand({
+                        mainEngine: 1,
+                        rotation: 1
+                    });
+
+                    if (lastAngularVelocity) {
+                        console.log(ship.omega - lastAngularVelocity);
+                    }
+                    lastAngularVelocity = ship.omega;
+                }
+            }
+        });
+    }, 1);
+}
+
+start();
