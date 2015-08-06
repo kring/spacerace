@@ -24,7 +24,7 @@ function loadMapFlowField(mapName) {
                 return +value;
             });
         }),
-        getFlow: function(x, y) {
+        getFlowDirection: function(x, y) {
             return {
                 x: this.x[y][x],
                 y: this.y[y][x]
