@@ -7,5 +7,6 @@ init(function(game) {
     });
 
     game.state.on("message", function(topic, message) {
+      console.log(message.toString());
     });
-}), 1;
+}, 1);
