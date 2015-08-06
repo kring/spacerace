@@ -21,7 +21,13 @@ function loadMapFlowField(mapName) {
             return item.map(function(value) {
                 return +value;
             });
-        })
+        }),
+        getFlow: function(x, y) {
+            return {
+                x: this.x[y][x],
+                y: this.y[y][x]
+            }
+        }
     };
 
 }
