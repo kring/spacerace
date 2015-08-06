@@ -17,13 +17,13 @@ function loadMapFlowField(mapName) {
                 return +value;
             });
         }),
-        y: csvX.map(function(item) {
+        y: csvY.map(function(item) {
             return item.map(function(value) {
                 return +value;
             });
         })
     };
-    
+
 }
 
 module.exports = loadMapFlowField;
