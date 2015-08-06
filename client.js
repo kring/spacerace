@@ -42,7 +42,7 @@ module.exports.init = function(game, numberOfGames) {
             if(message.state === "running") {
                 if(!started) {
                     started = true;
-                    game.start(setCommand);
+                    game.start(lobbyInfo.map, setCommand);
                 }
 
                 var ship;
