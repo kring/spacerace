@@ -1,3 +1,5 @@
+'use strict';
+
 var fs = require('fs');
 var d3 = require('d3');
 
@@ -26,7 +28,7 @@ function loadMapFlowField(mapName) {
             return {
                 x: this.x[y][x],
                 y: this.y[y][x]
-            }
+            };
         }
     };
 
