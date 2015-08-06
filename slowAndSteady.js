@@ -9,6 +9,11 @@ function start() {
         var lastAngularVelocity;
 
 
+        game.on("new-ship-state", function(ship) {
+
+
+
+        });
         game.state.on("message", function(topic, message) {
             message = JSON.parse(message.toString());
             if(message.state === "finished") {
