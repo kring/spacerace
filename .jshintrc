@@ -16,7 +16,7 @@
   "regexp": false,
   "undef": true,
   "unused": "vars",
-  "strict": true,
+  "strict": false,
   "trailing": true,
   "asi": false,
   "boss": false,
