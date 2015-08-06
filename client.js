@@ -1,5 +1,4 @@
 var zmq = require("zmq");
-var
 
 var gamesPlayed = 0;
 module.exports.init = function(game, numberOfGames) {
@@ -7,7 +6,7 @@ module.exports.init = function(game, numberOfGames) {
     lobbySocket.connect("tcp://10.0.0.236:5558");
     lobbySocket.monitor(500, 0);
 
-    var name = "yuri";
+    var name = "kring";
 
     lobbySocket.on("connect", function(fd, ep) {
         console.log("connect, endpoint:", ep);
@@ -37,7 +36,7 @@ module.exports.init = function(game, numberOfGames) {
         };
 
         var started = false;
-        stateSocket.state.on("message", function(topic, message) {
+        stateSocket.on("message", function(topic, message) {
             message = JSON.parse(message.toString());
             if(message.state === "running") {
                 if(!started) {

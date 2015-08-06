@@ -4,6 +4,7 @@
   "description": "",
   "dependencies": {
     "d3": "^3.5.6",
+    "keypress": "^0.2.1",
     "zmq": "^2.12.0"
   }
 }
