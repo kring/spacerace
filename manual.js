@@ -15,8 +15,9 @@ process.stdin.on('keypress', function(ch, key) {
     }
     if (key.name === 'a') {
         command.rotation = 1;
-        console.log('rotate left')
+        console.log('rotate left');
     }
+
     if (key.name === 'd') {
         command.rotation = -1;
         console.log('rotate right');
@@ -26,6 +27,9 @@ process.stdin.on('keypress', function(ch, key) {
         console.log('stop rotating');
     }
 
+    if (key.name === 'c') {
+        process.exit();
+    }
 });
 
 process.stdin.setRawMode(true);
@@ -38,4 +42,4 @@ init({
     message: function(myShip, data, setCommand) {
         setCommand(command);
     }
-})
+});
